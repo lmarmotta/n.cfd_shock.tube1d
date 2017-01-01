@@ -1,0 +1,76 @@
+&PAR_physical
+
+
+    p1 = 10.0d0
+    p4 = 1.0d0
+
+    rho1  = 10.0d0
+    rho4 = 1.0d0
+
+    fgamma = 1.4d0
+    R_const = 287.0d0
+
+    F_Cp = 1004.5
+    F_Cv = 717.5
+
+/
+
+*******************************************************************************
+total_mesh_points -> Number of internal points.
+start_mesh_point - > Coordnate of first point.
+final_mesh_point - > Coordnate of last point.
+print_step       - > Print at each <var> iterations.
+*******************************************************************************
+
+&PAR_geometry
+
+    total_mesh_points = 1001
+    start_mesh_point = -5.0d0
+    final_mesh_point = 5.0d0
+
+    print_step = 100
+
+/
+
+*******************************************************************************
+scheme = 1  -> Explicit Euler and Centered Spatial
+scheme = 2  -> Lax-Wendroff
+scheme = 3  -> MacCormack
+scheme = 4  -> Beam-Warminga Implicit
+scheme = 5  -> Steger-Warming 1st order scheme [Explicit time-stepping]
+scheme = 6  -> Steger-Warming 2st order scheme [Explicit time-stepping]
+scheme = 7  -> Van Leer 1st order scheme [Explicit time-stepping]
+scheme = 8  -> Van Leer 2st order scheme [Explicit time-stepping]
+scheme = 9  -> Roe 1st order scheme [Explicit time-stepping]
+scheme = 10 -> AUSM+
+scheme = 11 -> Steger-Warming 1st order scheme [Implicit time-stepping]
+scheme = 12 -> Van Leer 1st order scheme [Implicit time-stepping]
+scheme = 13 -> Harten scheme [explicit 1st order - Roe avgs]
+scheme = 14 -> Harten scheme [explicit 2nd order - Roe avgs]
+scheme = 15 -> Harten scheme [explicit 1st order - Aritmetic avgs]
+scheme = 16 -> Harten scheme [explicit 2nd order - Aritmetic avgs]
+*******************************************************************************
+
+&PAR_numeric
+
+    scheme = 16
+    iterations = 10000
+    time_step = 0.0001d0
+
+/
+
+*******************************************************************************
+dissp_scheme = 0  -> No artificial dissipation
+dissp_scheme = 1  -> JST Non-linear artificial dissipation
+dissp_scheme = 2  -> JST linear 2nd difference dissipation
+dissp_scheme = 3  -> JST linear 4th difference dissipation
+
+dissip_omega = 0:1 -> The multiplication factor for constant dissipations.
+*******************************************************************************
+
+&PAR_dissip
+
+    dissp_scheme = 0
+    dissip_omega = 0.2d0
+
+/
